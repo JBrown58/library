@@ -6,7 +6,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="scripts.js"></script>
     <link rel="stylesheet" href="styles.css" />
+    <link href="https://fonts.cdnfonts.com/css/roboto" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/ee91009b7f.js" crossorigin="anonymous"></script>
     <title>Library</title>
   </head>
-  <body></body>
+  <body>
+    <div class="header">
+      <h1>My Book Collection</h1>
+    </div>
+    <div class="main-content-wrapper">
+      <div class="sidebar">
+        <label for="input-title" class="form-label">Title</label>
+        <input type="text" id="input-title" name="title" value="" placeholder="Enter the title">
+     
+        <label for="input-author" class="form-label">Author</label>
+        <input type="text" id="input-author" name="author" value="" placeholder="Enter the author">
+      
+        <label for="input-pages" class="form-label">Total Pages</label>
+        <input type="text" id="input-pages" name="pages" value="" placeholder="Enter # of pages">
+
+        <label for="input-read" class="form-label">Total Pages</label>
+        <input type="checkbox" id="input-read" name="read" value="" placeholder="Enter # of pages">
+        <div sidebar-info>
+          <p>Total books: </p>
+          <p>Total pages: </p>
+          <p>Books read: </p>
+        </div>
+      </div>
+      <div class="card-container">
+        <p>here are the cards</p>
+      </div>
+    </div>
+
+
+  </body>
 </html>
