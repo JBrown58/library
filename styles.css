@@ -22,7 +22,7 @@ h1 {
   padding-left: 35px;
 }
 
-.sidebar {
+form {
   display: flex;
   flex-direction: column;
   background-color: #efeff5;
@@ -43,4 +43,15 @@ label.form-label {
 
 #input-read {
   margin-right: 152px;
+}
+
+.card-container {
+  padding-left: 20px;
+}
+
+#card {
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 5px;
+  padding: 20px;
 }
