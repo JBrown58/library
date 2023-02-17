@@ -19,4 +19,9 @@ function addBookToLibrary() {
   // do stuff here
 }
 
-console.log(addBookToLibrary());
+let cardItem = document.getElementById('card');
+addBookToLibrary();
+
+let jsonString = JSON.stringify(myLibrary);
+
+cardItem.innerHTML = jsonString;

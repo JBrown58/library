@@ -1,45 +1,46 @@
 body {
-	font-family: "Roboto";
-	max-height: 100vh;
-	margin:0px;
+  font-family: 'Roboto';
+  max-height: 100vh;
+  margin: 0px;
 }
 
-h1{
-	margin: 0
+h1 {
+  margin: 0;
 }
 
-.main-content-wrapper{
-	display: flex;
+.main-content-wrapper {
+  display: flex;
 }
 
-.header{
-	display: flex;
-	background-color: #10a1e4e1;
-	color: white;
-	height: 5rem;
-	justify-content: flex-start;
-	align-items: center;
-	padding-left: 35px;
-
+.header {
+  display: flex;
+  background-color: #10a1e4e1;
+  color: white;
+  height: 5rem;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 35px;
 }
 
-.sidebar{
-	display: flex;
-	flex-direction: column;
-	background-color: #efeff5;
-	height: 100vh;
-	padding: 40px;
-
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  background-color: #efeff5;
+  height: 100vh;
+  padding: 40px;
 }
 
 label.form-label {
-	padding-bottom: 10px;
+  padding-bottom: 10px;
 }
 
-#input-title, #input-author, #input-pages, #input-read {
-	margin-bottom: 20px;
+#input-title,
+#input-author,
+#input-pages,
+#input-read {
+  margin-bottom: 20px;
 }
 
-#input-read{
-	margin-right: 152px;
+#input-read {
+  margin-right: 152px;
 }
