@@ -45,13 +45,19 @@ label.form-label {
   margin-right: 152px;
 }
 
-.card-container {
+#card-container {
+  display: flex;
   padding-left: 20px;
+  width: 100vw;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
 }
 
-#card {
+.card {
+  width: 50px;
+  height: 200px;
   border-style: solid;
   border-width: 1px;
   border-radius: 5px;
-  padding: 20px;
+  padding: 50px;
 }

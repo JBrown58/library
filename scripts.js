@@ -20,39 +20,45 @@ let inputTrueFalse = inputRead.checked;
 
 const addBookBtn = document.getElementById('addBtn');
 const cardContainer = document.getElementById('card-container');
-
+let myEvent;
 function addCard() {
-  for (let i = 0; i < myLibrary.length; i++) {
-    const book = myLibrary[i];
-    const card = document.createElement('div');
-    card.classList.add('card');
+  const book = myLibrary[myLibrary.length - 1];
+  let card = document.createElement('div');
+  card.classList.add('card');
 
-    const title = document.createElement('p');
-    title.innerHTML = book.title;
-    card.appendChild(title);
+  let title = document.createElement('p');
+  title.innerHTML = book.title;
+  card.appendChild(title);
 
-    const author = document.createElement('p');
-    author.innerHTML = book.author;
-    card.appendChild(author);
+  let author = document.createElement('p');
+  author.innerHTML = book.author;
+  card.appendChild(author);
 
-    const pages = document.createElement('p');
-    pages.innerHTML = book.pages;
-    card.appendChild(pages);
+  let pages = document.createElement('p');
+  pages.innerHTML = book.pages;
+  card.appendChild(pages);
 
-    const isRead = document.createElement('p');
-    isRead.innerHTML = book.read;
-    card.appendChild(isRead);
+  let isRead = document.createElement('p');
+  if (inputRead.checked === false) {
+    inputRead.value = 'not read';
+  } else {
+    inputRead.value = 'read';
+  }
+  isRead.innerHTML = inputRead.value;
 
-    /*if(inputRead.value === "") {
+  card.appendChild(isRead);
+
+  /*if(inputRead.value === "") {
 			isRead.innerHTML = "no"
 		} else {isRead.innerHTML = "yes"}*/
 
-    cardContainer.appendChild(card);
-  }
+  cardContainer.appendChild(card);
 }
+
 addBookBtn.addEventListener('click', addBookToLibrary);
 
 function addBookToLibrary(event) {
+  myEvent = event;
   event.preventDefault();
   myLibrary.push(
     new Book(
@@ -63,6 +69,11 @@ function addBookToLibrary(event) {
     )
   );
   addCard();
+
+  inputTitle.value = null;
+  inputAuthor.value = null;
+  inputPages.value = null;
+  inputRead.value = null;
 
   /*myLibrary.push(newBook);
   myLibrary.push(newBook2);
