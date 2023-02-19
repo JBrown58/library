@@ -21,6 +21,8 @@ let index = -1;
 
 const addBookBtn = document.getElementById('addBtn');
 const cardContainer = document.getElementById('card-container');
+let getAllCards = [];
+
 let myEvent;
 function addCard() {
   const book = myLibrary[myLibrary.length - 1];
@@ -83,9 +85,21 @@ function addCard() {
   function deleteBookFromLibrary() {
     console.log(card.dataset.cardId);
     index = card.dataset.cardId;
-    delete myLibrary[index];
 
-    /* myLibrary.splice(index, 1);*/
+    function refreshcardId() {
+      // for each card in getAllCards, check if their card id is > the card id that was removed.
+      //for all cards that meet this requirement, subtract their card id by 1.
+
+      for (i = 0; i < getAllCards.length; i++) {
+        console.log(`here + ${getAllCards[i].dataset.cardId}`);
+        if (getAllCards[i].dataset.cardId >= index) {
+          getAllCards[i].dataset.cardId = getAllCards[i].dataset.cardId - 1;
+        }
+      }
+    }
+    refreshcardId();
+    myLibrary.splice(index, 1);
+
     card.remove();
   }
 
@@ -94,6 +108,7 @@ function addCard() {
 		} else {isRead.innerHTML = "yes"}*/
 
   cardContainer.appendChild(card);
+  getAllCards = document.querySelectorAll('.card');
 }
 
 addBookBtn.addEventListener('click', addBookToLibrary);
