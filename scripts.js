@@ -17,6 +17,7 @@ let inputAuthor = document.getElementById('input-author');
 let inputPages = document.getElementById('input-pages');
 let inputRead = document.getElementById('input-read');
 let inputTrueFalse = inputRead.checked;
+let index = -1;
 
 const addBookBtn = document.getElementById('addBtn');
 const cardContainer = document.getElementById('card-container');
@@ -25,6 +26,9 @@ function addCard() {
   const book = myLibrary[myLibrary.length - 1];
   let card = document.createElement('div');
   card.classList.add('card');
+  card.dataset.cardId = ++index;
+
+  console.log(card.dataset);
 
   let title = document.createElement('p');
   title.innerHTML = book.title;
@@ -38,15 +42,52 @@ function addCard() {
   pages.innerHTML = book.pages;
   card.appendChild(pages);
 
-  let isRead = document.createElement('p');
+  let isRead = document.createElement('button');
   if (inputRead.checked === false) {
-    inputRead.value = 'not read';
+    myLibrary[myLibrary.length - 1].read = 'not read';
   } else {
-    inputRead.value = 'read';
+    myLibrary[myLibrary.length - 1].read = 'read';
   }
-  isRead.innerHTML = inputRead.value;
 
+  isRead.innerHTML = myLibrary[myLibrary.length - 1].read;
   card.appendChild(isRead);
+
+  isRead.addEventListener('click', toggleReadStatus);
+  function toggleReadStatus() {
+    if (myLibrary[myLibrary.length - 1].read === 'not read') {
+      myLibrary[myLibrary.length - 1].read = 'read';
+    } else {
+      myLibrary[myLibrary.length - 1].read = 'not read';
+    }
+    isRead.innerHTML = myLibrary[myLibrary.length - 1].read;
+
+    /*let toggleRead = document.createElement('button');
+  toggleRead.innerHTML = 'ToggleRead';
+  card.appendChild(toggleRead);*/
+
+    /*toggleRead.addEventListener('click', toggleReadStatus);*/
+
+    /* if (isRead.innerHTML === 'not read') {
+      isRead.innerHTML = 'read';
+    } else {
+      isRead.innerHTML = 'not read';
+    }*/
+  }
+
+  let deletebtn = document.createElement('button');
+  deletebtn.innerHTML = 'Delete';
+  card.appendChild(deletebtn);
+
+  deletebtn.addEventListener('click', deleteBookFromLibrary);
+
+  function deleteBookFromLibrary() {
+    console.log(card.dataset.cardId);
+    index = card.dataset.cardId;
+    delete myLibrary[index];
+
+    /* myLibrary.splice(index, 1);*/
+    card.remove();
+  }
 
   /*if(inputRead.value === "") {
 			isRead.innerHTML = "no"
