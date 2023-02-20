@@ -25,8 +25,7 @@ h1 {
 form {
   display: flex;
   flex-direction: column;
-  background-color: #efeff5;
-  height: 100vh;
+  background-color: #ffffff;
   padding: 40px;
 }
 
@@ -47,17 +46,156 @@ label.form-label {
 
 #card-container {
   display: flex;
-  padding-left: 20px;
+  padding: 20px;
   width: 100vw;
   justify-content: space-evenly;
   flex-wrap: wrap;
+  background-color: #f0eef1;
+  word-break: break-all;
 }
 
 .card {
-  width: 50px;
-  height: 200px;
+  display: flex;
+  width: 200px;
+  height: fit-content;
   border-style: solid;
-  border-width: 1px;
+  border-width: 3px;
   border-radius: 5px;
-  padding: 50px;
+  padding: 40px;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f1f49d;
+}
+
+  /*    display: flex;
+    width: 20%;
+    height: 60%;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size: 20px;
+    gap: 20px;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #fffbfb;
+    box-shadow: rgb(0 0 0 / 16%) 0px 1px 4px;
+    line-height: 1.2;*/
+
+.delete-button {
+  padding: 12px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border: 2px solid #f44336;
+  text-decoration-color: initial;
+  background-color: white;
+  color: black;
+  border: 2px solid #f44336;
+}
+
+.delete-button:hover {
+  background-color: #f44336;
+  color: white;
+  border: 2px solid #f44336;
+}
+
+.read-button {
+  background-color: #fbeee0;
+  border: 2px solid #422800;
+  border-radius: 30px;
+  box-shadow: #422800 4px 4px 0 0;
+  color: #422800;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 18px;
+  padding: 0 18px;
+  line-height: 50px;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  margin-bottom: 5px;
+}
+
+.read-button:hover {
+  background-color: #fff;
+}
+
+.read-button:active {
+  box-shadow: #422800 2px 2px 0 0;
+  transform: translate(2px, 2px);
+}
+
+
+#addBtn {
+  appearance: none;
+  background-color: #2ea44f;
+  border: 1px solid rgba(27, 31, 35, .15);
+  border-radius: 6px;
+  box-shadow: rgba(27, 31, 35, .1) 0 1px 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  padding: 6px 16px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+#addBtn:focus:not(:focus-visible):not(.focus-visible) {
+  box-shadow: none;
+  outline: none;
+}
+
+#addBtn:hover {
+  background-color: #2c974b;
+}
+
+#addBtn:focus {
+  box-shadow: rgba(46, 164, 79, .4) 0 0 0 3px;
+  outline: none;
+}
+
+#addBtn:disabled {
+  background-color: #94d3a2;
+  border-color: rgba(27, 31, 35, .1);
+  color: rgba(255, 255, 255, .8);
+  cursor: default;
+}
+
+#addBtn:active {
+  background-color: #298e46;
+  box-shadow: rgba(20, 70, 32, .2) 0 1px 0 inset;
+}
+
+.wrap-sidebar-content{
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar{
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: flex-start;
+  gap: 5rem;
+  align-items: center;
+}
+
+.sidebar-info {
+  margin-right: 50px;
 }

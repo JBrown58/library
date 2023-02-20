@@ -9,6 +9,17 @@ function Book(title, author, pages, read) {
   // the constructor...
 }
 
+function setTotalBooks() {
+  totalBooks.innerHTML = myLibrary.length;
+}
+
+function setTotalPages() {
+  for (i = 0; i <= myLibrary.length; i++) {
+    totalPages.innerHTML =
+      parseInt(totalPages.innerHTML) + parseInt(myLibrary[i].pages);
+  }
+}
+
 const newBook = new Book('gdrg', 'grd', '345', 'not read');
 const newBook2 = new Book('Best Guy', 'Amazing story', '524', 'read');
 
@@ -16,6 +27,8 @@ let inputTitle = document.getElementById('input-title');
 let inputAuthor = document.getElementById('input-author');
 let inputPages = document.getElementById('input-pages');
 let inputRead = document.getElementById('input-read');
+let totalBooks = document.getElementById('total-books');
+let totalPages = document.getElementById('total-pages');
 let inputTrueFalse = inputRead.checked;
 let index = -1;
 
@@ -45,6 +58,7 @@ function addCard() {
   card.appendChild(pages);
 
   let isRead = document.createElement('button');
+  isRead.classList.add('read-button');
   if (inputRead.checked === false) {
     myLibrary[myLibrary.length - 1].read = 'not read';
   } else {
@@ -78,6 +92,7 @@ function addCard() {
 
   let deletebtn = document.createElement('button');
   deletebtn.innerHTML = 'Delete';
+  deletebtn.classList.add('delete-button');
   card.appendChild(deletebtn);
 
   deletebtn.addEventListener('click', deleteBookFromLibrary);
@@ -101,6 +116,8 @@ function addCard() {
     myLibrary.splice(index, 1);
 
     card.remove();
+    setTotalBooks();
+    setTotalPages();
   }
 
   /*if(inputRead.value === "") {
@@ -109,6 +126,8 @@ function addCard() {
 
   cardContainer.appendChild(card);
   getAllCards = document.querySelectorAll('.card');
+  setTotalBooks();
+  setTotalPages();
 }
 
 addBookBtn.addEventListener('click', addBookToLibrary);

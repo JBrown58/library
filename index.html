@@ -18,58 +18,56 @@
       <h1>My Book Collection</h1>
     </div>
     <div class="main-content-wrapper">
-      <div class="sidebar">
-        <form action="/submit-form" method="POST">
-          <label for="input-title" class="form-label">Title</label>
-          <input
-            type="text"
-            id="input-title"
-            name="title"
-            value=""
-            placeholder="Enter the title"
-            required
-          />
-
-          <label for="input-author" class="form-label">Author</label>
-          <input
-            type="text"
-            id="input-author"
-            name="author"
-            value=""
-            placeholder="Enter the author"
-            required
-          />
-
-          <label for="input-pages" class="form-label">Total Pages</label>
-          <input
-            type="text"
-            id="input-pages"
-            name="pages"
-            value=""
-            placeholder="Enter # of pages"
-            required
-          />
-
-
-          <label for="input-read" class="form-label">Read</label>
-          <input
-            type="checkbox"
-            id="input-read"
-            name="read"
-            value=""
-            placeholder="Enter # of pages"
-            required
-          />
-
-          
-          <div class="button-container"><button id="addBtn">Add a Book</button></div>
-        </form>
-        <div class="sidebar-info">
-          <p>Total books:</p>
-          <p>Total pages:</p>
-          <p>Books read:</p>
-        </div>
+        <div class="sidebar">
+          <form action="/submit-form" method="POST">
+            <label for="input-title" class="form-label">Title</label>
+            <input
+              type="text"
+              id="input-title"
+              name="title"
+              value=""
+              placeholder="Enter the title"
+              maxlength="100"
+              required
+            />
+            <label for="input-author" class="form-label">Author</label>
+            <input
+              type="text"
+              id="input-author"
+              name="author"
+              value=""
+              placeholder="Enter the author"
+              maxlength="30"
+              required
+            />
+            <label for="input-pages" class="form-label">Total Pages</label>
+            <input
+              type="number"
+              id="input-pages"
+              name="pages"
+              value=""
+              placeholder="Enter # of pages"
+              maxlength="5"
+              required
+            />
+            <label for="input-read" class="form-label">Read</label>
+            <input
+              type="checkbox"
+              id="input-read"
+              name="read"
+              value=""
+              placeholder="Enter # of pages"
+              required
+            />
+            <div class="button-container"><button id="addBtn">Add a Book</button></div>
+          </form>
+          <div class="sidebar-info">
+            <p>Total books: <span id="total-books"></span></p>
+            <p>Total pages: <span id="total-pages"></span></p>
+            <p>Books read: <span id="total-books-read"></span></p>
+          </div>
       </div>
+    
       <div id="card-container">
         
    
