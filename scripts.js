@@ -15,8 +15,6 @@ let inputRead = document.getElementById('input-read');
 let totalBooks = document.getElementById('total-books');
 let totalPages = document.getElementById('total-pages');
 let totalBooksRead = document.getElementById('total-books-read');
-let bookToggleStatus = true;
-let addPressed = true;
 let numberBooksRead = 0;
 let inputTrueFalse = inputRead.checked;
 let index = -1;
@@ -43,20 +41,15 @@ function setTotalBooksRead() {
   for (i = 0; i < 1; i++) {
     //loop through each book in the myLibrary array, and check which ones contain the string 'read' for pages property
     // store number in a variable
-    if (
-      (getAllCards.length === myLibrary.length && addPressed === true) ||
-      bookToggleStatus === true
-    ) {
+    if (getAllCards.length === myLibrary.length) {
       if (myLibrary[myLibrary.length - 1].read === 'read') {
         numberBooksRead++;
         totalBooksRead.innerHTML = numberBooksRead;
-        bookToggleStatus = !bookToggleStatus;
         break;
       }
     } else {
       numberBooksRead--;
       totalBooksRead.innerHTML = numberBooksRead;
-      bookToggleStatus = !bookToggleStatus;
       break;
     }
   }
@@ -99,7 +92,6 @@ function addCard() {
       myLibrary[myLibrary.length - 1].read = 'not read';
     }
     isRead.innerHTML = myLibrary[myLibrary.length - 1].read;
-    bookToggleStatus = !!bookToggleStatus;
     setTotalBooksRead();
   }
 
@@ -112,7 +104,7 @@ function addCard() {
 
   function deleteBookFromLibrary() {
     index = card.dataset.cardId;
-    addPressed = !addPressed;
+
     function refreshcardId() {
       // for each card in getAllCards, check if their card id is > the card id that was removed.
       //for all cards that meet this requirement, subtract their card id by 1.
