@@ -1,27 +1,12 @@
 let myLibrary = [];
+let getAllCards = [];
 
 function Book(title, author, pages, read) {
   this.title = title;
   this.author = author;
   this.pages = pages;
   this.read = read;
-
-  // the constructor...
 }
-
-function setTotalBooks() {
-  totalBooks.innerHTML = myLibrary.length;
-}
-
-function setTotalPages() {
-  for (i = 0; i <= myLibrary.length; i++) {
-    totalPages.innerHTML =
-      parseInt(totalPages.innerHTML) + parseInt(myLibrary[i].pages);
-  }
-}
-
-const newBook = new Book('gdrg', 'grd', '345', 'not read');
-const newBook2 = new Book('Best Guy', 'Amazing story', '524', 'read');
 
 let inputTitle = document.getElementById('input-title');
 let inputAuthor = document.getElementById('input-author');
@@ -29,21 +14,59 @@ let inputPages = document.getElementById('input-pages');
 let inputRead = document.getElementById('input-read');
 let totalBooks = document.getElementById('total-books');
 let totalPages = document.getElementById('total-pages');
+let totalBooksRead = document.getElementById('total-books-read');
+let bookToggleStatus = true;
+let addPressed = true;
+let numberBooksRead = 0;
 let inputTrueFalse = inputRead.checked;
 let index = -1;
 
 const addBookBtn = document.getElementById('addBtn');
 const cardContainer = document.getElementById('card-container');
-let getAllCards = [];
 
-let myEvent;
+function setTotalBooks() {
+  totalBooks.innerHTML = myLibrary.length;
+}
+
+function setTotalPages() {
+  totalPages.innerHTML = 0;
+  for (i = 0; i < myLibrary.length; i++) {
+    totalPages.innerHTML =
+      parseInt(totalPages.innerHTML) + parseInt(myLibrary[i].pages);
+    if (totalPages.innerHTML === 'NaN') {
+      totalPages.innerHTML = 0;
+    }
+  }
+}
+
+function setTotalBooksRead() {
+  for (i = 0; i < 1; i++) {
+    //loop through each book in the myLibrary array, and check which ones contain the string 'read' for pages property
+    // store number in a variable
+    if (
+      (getAllCards.length === myLibrary.length && addPressed === true) ||
+      bookToggleStatus === true
+    ) {
+      if (myLibrary[myLibrary.length - 1].read === 'read') {
+        numberBooksRead++;
+        totalBooksRead.innerHTML = numberBooksRead;
+        bookToggleStatus = !bookToggleStatus;
+        break;
+      }
+    } else {
+      numberBooksRead--;
+      totalBooksRead.innerHTML = numberBooksRead;
+      bookToggleStatus = !bookToggleStatus;
+      break;
+    }
+  }
+}
+
 function addCard() {
   const book = myLibrary[myLibrary.length - 1];
   let card = document.createElement('div');
   card.classList.add('card');
   card.dataset.cardId = ++index;
-
-  console.log(card.dataset);
 
   let title = document.createElement('p');
   title.innerHTML = book.title;
@@ -76,21 +99,11 @@ function addCard() {
       myLibrary[myLibrary.length - 1].read = 'not read';
     }
     isRead.innerHTML = myLibrary[myLibrary.length - 1].read;
-
-    /*let toggleRead = document.createElement('button');
-  toggleRead.innerHTML = 'ToggleRead';
-  card.appendChild(toggleRead);*/
-
-    /*toggleRead.addEventListener('click', toggleReadStatus);*/
-
-    /* if (isRead.innerHTML === 'not read') {
-      isRead.innerHTML = 'read';
-    } else {
-      isRead.innerHTML = 'not read';
-    }*/
+    bookToggleStatus = !!bookToggleStatus;
+    setTotalBooksRead();
   }
 
-  let deletebtn = document.createElement('button');
+  const deletebtn = document.createElement('button');
   deletebtn.innerHTML = 'Delete';
   deletebtn.classList.add('delete-button');
   card.appendChild(deletebtn);
@@ -98,16 +111,15 @@ function addCard() {
   deletebtn.addEventListener('click', deleteBookFromLibrary);
 
   function deleteBookFromLibrary() {
-    console.log(card.dataset.cardId);
     index = card.dataset.cardId;
-
+    addPressed = !addPressed;
     function refreshcardId() {
       // for each card in getAllCards, check if their card id is > the card id that was removed.
       //for all cards that meet this requirement, subtract their card id by 1.
 
       for (i = 0; i < getAllCards.length; i++) {
         console.log(`here + ${getAllCards[i].dataset.cardId}`);
-        if (getAllCards[i].dataset.cardId >= index) {
+        if (getAllCards[i].dataset.cardId > index) {
           getAllCards[i].dataset.cardId = getAllCards[i].dataset.cardId - 1;
         }
       }
@@ -118,16 +130,12 @@ function addCard() {
     card.remove();
     setTotalBooks();
     setTotalPages();
+    setTotalBooksRead();
   }
-
-  /*if(inputRead.value === "") {
-			isRead.innerHTML = "no"
-		} else {isRead.innerHTML = "yes"}*/
 
   cardContainer.appendChild(card);
   getAllCards = document.querySelectorAll('.card');
   setTotalBooks();
-  setTotalPages();
 }
 
 addBookBtn.addEventListener('click', addBookToLibrary);
@@ -144,38 +152,11 @@ function addBookToLibrary(event) {
     )
   );
   addCard();
+  setTotalPages();
+  setTotalBooksRead();
 
   inputTitle.value = null;
   inputAuthor.value = null;
   inputPages.value = null;
   inputRead.value = null;
-
-  /*myLibrary.push(newBook);
-  myLibrary.push(newBook2);
-  return myLibrary;*/
-  // do stuff here
 }
-
-/*let cardTitle = document.getElementById('card-title');
-cardTitle.innerHTML = newBook.title;
-
-let cardAuthor = document.getElementById('card-author');
-cardAuthor.innerHTML = newBook.author;
-
-let cardPages = document.getElementById('card-pages');
-cardPages.innerHTML = newBook.pages;
-
-let cardRead = document.getElementById('card-read');
-cardRead.innerHTML = newBook.readStatus;*/
-
-/*addBookToLibrary();
-let jsonString = JSON.stringify(myLibrary);
-
-cardTitle.innerHTML = jsonString;
-
-/*let cardItem = document.getElementById('card');
-addBookToLibrary();
-
-let jsonString = JSON.stringify(myLibrary);
-
-cardItem.innerHTML = jsonString; */
