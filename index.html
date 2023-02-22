@@ -19,7 +19,7 @@
     </div>
     <div class="main-content-wrapper">
         <div class="sidebar">
-          <form action="/submit-form" method="POST">
+          <form method="POST" id="form">
             <label for="input-title" class="form-label">Title</label>
             <input
               type="text"
@@ -57,28 +57,11 @@
               name="read"
               value=""
               placeholder="Enter # of pages"
-              required
             />
-            <div class="button-container"><button id="addBtn">Add a Book</button></div>
+          <button type="submit" id="addBtn">Add a Book</button>
           </form>
-          <div class="sidebar-info">
-            <p>Total books: <span id="total-books"></span></p>
-            <p>Total pages: <span id="total-pages"></span></p>
-            <p>Books read: <span id="total-books-read"></span></p>
-          </div>
       </div>
-    
       <div id="card-container">
-        
-   
-   
-        <!--   <div id="card">
-         
-         
-          <p>Title: <span id="card-title"></span></p>
-          <p>Author: <span id="card-author"></span></p>
-          <p>Total Pages: <span id="card-pages"></span></p>
-          <p>Read: <span id="card-read"></span></p> -->
         </div>
       </div>
     </div>

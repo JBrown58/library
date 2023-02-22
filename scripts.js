@@ -15,13 +15,17 @@ let inputRead = document.getElementById('input-read');
 let totalBooks = document.getElementById('total-books');
 let totalPages = document.getElementById('total-pages');
 let totalBooksRead = document.getElementById('total-books-read');
+
 let numberBooksRead = 0;
 let inputTrueFalse = inputRead.checked;
 let index = -1;
 
+const submitForm = document.getElementById('form');
 const addBookBtn = document.getElementById('addBtn');
 const cardContainer = document.getElementById('card-container');
 
+/*
+-- TotalBooks, TotalPages, and TotalBooksRead functionality will be added later.
 function setTotalBooks() {
   totalBooks.innerHTML = myLibrary.length;
 }
@@ -53,7 +57,7 @@ function setTotalBooksRead() {
       break;
     }
   }
-}
+}*/
 
 function addCard() {
   const book = myLibrary[myLibrary.length - 1];
@@ -92,7 +96,6 @@ function addCard() {
       myLibrary[myLibrary.length - 1].read = 'not read';
     }
     isRead.innerHTML = myLibrary[myLibrary.length - 1].read;
-    setTotalBooksRead();
   }
 
   const deletebtn = document.createElement('button');
@@ -118,22 +121,16 @@ function addCard() {
     }
     refreshcardId();
     myLibrary.splice(index, 1);
-
     card.remove();
-    setTotalBooks();
-    setTotalPages();
-    setTotalBooksRead();
   }
 
   cardContainer.appendChild(card);
   getAllCards = document.querySelectorAll('.card');
-  setTotalBooks();
 }
 
-addBookBtn.addEventListener('click', addBookToLibrary);
+submitForm.addEventListener('submit', addBookToLibrary);
 
 function addBookToLibrary(event) {
-  myEvent = event;
   event.preventDefault();
   myLibrary.push(
     new Book(
@@ -144,8 +141,6 @@ function addBookToLibrary(event) {
     )
   );
   addCard();
-  setTotalPages();
-  setTotalBooksRead();
 
   inputTitle.value = null;
   inputAuthor.value = null;
