@@ -1,11 +1,13 @@
 let myLibrary = [];
 let getAllCards = [];
 
-function Book(title, author, pages, read) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
+class Book {
+  constructor(title, author, pages, read) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+  }
 }
 
 let inputTitle = document.getElementById('input-title');
@@ -23,41 +25,6 @@ let index = -1;
 const submitForm = document.getElementById('form');
 const addBookBtn = document.getElementById('addBtn');
 const cardContainer = document.getElementById('card-container');
-
-/*
--- TotalBooks, TotalPages, and TotalBooksRead functionality will be added later.
-function setTotalBooks() {
-  totalBooks.innerHTML = myLibrary.length;
-}
-
-function setTotalPages() {
-  totalPages.innerHTML = 0;
-  for (i = 0; i < myLibrary.length; i++) {
-    totalPages.innerHTML =
-      parseInt(totalPages.innerHTML) + parseInt(myLibrary[i].pages);
-    if (totalPages.innerHTML === 'NaN') {
-      totalPages.innerHTML = 0;
-    }
-  }
-}
-
-function setTotalBooksRead() {
-  for (i = 0; i < 1; i++) {
-    //loop through each book in the myLibrary array, and check which ones contain the string 'read' for pages property
-    // store number in a variable
-    if (getAllCards.length === myLibrary.length) {
-      if (myLibrary[myLibrary.length - 1].read === 'read') {
-        numberBooksRead++;
-        totalBooksRead.innerHTML = numberBooksRead;
-        break;
-      }
-    } else {
-      numberBooksRead--;
-      totalBooksRead.innerHTML = numberBooksRead;
-      break;
-    }
-  }
-}*/
 
 function addCard() {
   const book = myLibrary[myLibrary.length - 1];
@@ -113,7 +80,6 @@ function addCard() {
       //for all cards that meet this requirement, subtract their card id by 1.
 
       for (i = 0; i < getAllCards.length; i++) {
-        console.log(`here + ${getAllCards[i].dataset.cardId}`);
         if (getAllCards[i].dataset.cardId > index) {
           getAllCards[i].dataset.cardId = getAllCards[i].dataset.cardId - 1;
         }
