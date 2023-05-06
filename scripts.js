@@ -94,22 +94,50 @@ function addCard() {
   getAllCards = document.querySelectorAll('.card');
 }
 
-submitForm.addEventListener('submit', addBookToLibrary);
 
-function addBookToLibrary(event) {
-  event.preventDefault();
-  myLibrary.push(
-    new Book(
-      inputTitle.value,
-      inputAuthor.value,
-      inputPages.value,
-      inputRead.value
-    )
-  );
-  addCard();
 
-  inputTitle.value = null;
-  inputAuthor.value = null;
-  inputPages.value = null;
-  inputRead.value = null;
-}
+
+  function addBookToLibrary(event) {
+    event.preventDefault();
+    if (inputTitle.value === '') {
+      inputTitle.setCustomValidity('You must enter this title field!!!');
+    } else {
+      inputTitle.setCustomValidity('');
+    }
+
+    if (inputAuthor.value === '') {
+      inputAuthor.setCustomValidity('You must enter this author field!!!');
+    } else {
+      inputAuthor.setCustomValidity('');
+    }
+
+    if (inputPages.value === '') {
+      inputPages.setCustomValidity('You must enter this pages field!!!');
+    } else {
+      inputPages.setCustomValidity('');
+    }
+    const isValid =
+      inputTitle.checkValidity() &&
+      inputAuthor.checkValidity() &&
+      inputPages.checkValidity();
+    if (isValid) {
+      myLibrary.push(
+        new Book(
+          inputTitle.value,
+          inputAuthor.value,
+          inputPages.value,
+          inputRead.value
+        )
+      );
+      addCard();
+
+      inputTitle.value = null;
+      inputAuthor.value = null;
+      inputPages.value = null;
+      inputRead.value = null;
+    }
+    inputTitle.reportValidity()
+    inputAuthor.reportValidity()
+    inputRead.reportValidity()
+  }
+  submitForm.addEventListener('submit', addBookToLibrary);
